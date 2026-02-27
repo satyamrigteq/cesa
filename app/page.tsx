@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart,
@@ -40,8 +41,8 @@ export default function Home() {
       {/* Navigation */}
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${navScrolled
-            ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-border shadow-sm py-3"
-            : "bg-transparent py-5"
+          ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-border shadow-sm py-3"
+          : "bg-transparent py-5"
           }`}
       >
         <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
@@ -65,16 +66,16 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="hidden md:flex items-center gap-8 font-medium text-sm"
           >
-            <a href="#about" className="text-secondary-foreground hover:text-primary transition-colors">Our Mission</a>
-            <a href="#artworks" className="text-secondary-foreground hover:text-primary transition-colors">Gallery</a>
-            <a href="#impact" className="text-secondary-foreground hover:text-primary transition-colors">Impact</a>
+            <Link href="/about" className="text-secondary-foreground hover:text-primary transition-colors">About Us</Link>
+            <Link href="/artists" className="text-secondary-foreground hover:text-primary transition-colors">Top Artists</Link>
+            <Link href="/#artworks" className="text-secondary-foreground hover:text-primary transition-colors">Gallery</Link>
             <div className="flex items-center gap-4 ml-4">
-              <button className="text-sm font-semibold text-secondary-foreground hover:text-primary transition-colors px-4 py-2">
+              <Link href="/login" className="text-sm font-semibold text-secondary-foreground hover:text-primary transition-colors px-4 py-2">
                 Login
-              </button>
-              <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-full font-semibold shadow-xl shadow-primary/20 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+              </Link>
+              <Link href="/signup" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-full font-semibold shadow-xl shadow-primary/20 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
                 Sign Up <ArrowRight size={16} />
-              </button>
+              </Link>
             </div>
           </motion.nav>
 
@@ -96,12 +97,12 @@ export default function Home() {
             exit={{ opacity: 0, scale: 0.95 }}
             className="fixed inset-x-4 top-20 z-40 md:hidden glass-panel rounded-2xl p-6 flex flex-col gap-6 shadow-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-white/20"
           >
-            <a href="#about" onClick={() => setMobileMenu(false)} className="text-lg font-semibold border-b border-border pb-3">Our Mission</a>
-            <a href="#artworks" onClick={() => setMobileMenu(false)} className="text-lg font-semibold border-b border-border pb-3">Gallery</a>
-            <a href="#impact" onClick={() => setMobileMenu(false)} className="text-lg font-semibold border-b border-border pb-3">Impact</a>
+            <Link href="/about" onClick={() => setMobileMenu(false)} className="text-lg font-semibold border-b border-border pb-3">About Us</Link>
+            <Link href="/artists" onClick={() => setMobileMenu(false)} className="text-lg font-semibold border-b border-border pb-3">Top Artists</Link>
+            <Link href="/#artworks" onClick={() => setMobileMenu(false)} className="text-lg font-semibold border-b border-border pb-3">Gallery</Link>
             <div className="flex flex-col gap-3 mt-2">
-              <button className="w-full py-3 rounded-xl border border-border font-semibold">Login</button>
-              <button className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/30">Sign Up to Support</button>
+              <Link href="/login" className="w-full text-center py-3 rounded-xl border border-border font-semibold">Login</Link>
+              <Link href="/signup" className="w-full text-center py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/30">Sign Up to Support</Link>
             </div>
           </motion.div>
         )}
@@ -131,9 +132,9 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="bg-foreground hover:bg-foreground/90 text-background px-8 py-4 rounded-full font-bold text-lg transition-all hover:-translate-y-1 shadow-2xl shadow-foreground/20 flex items-center justify-center gap-2">
+              <Link href="/#artworks" className="bg-foreground hover:bg-foreground/90 text-background px-8 py-4 rounded-full font-bold text-lg transition-all hover:-translate-y-1 shadow-2xl shadow-foreground/20 flex items-center justify-center gap-2">
                 Explore Artworks <Palette size={20} />
-              </button>
+              </Link>
               <button className="px-8 py-4 rounded-full font-bold text-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all hover:-translate-y-1 flex items-center justify-center gap-2 border border-border">
                 <Globe2 size={20} /> Global Donors
               </button>
@@ -207,16 +208,19 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Sunset over Green Hills", artist: "Aarav (Age 9)", img: SAMPLE_1, total: 100, sold: 40 },
+              { title: "Sunset over Green Hills", artist: "Aarav (Age 9)", img: SAMPLE_1, total: 100, sold: 100 },
               { title: "The Colorful Friend", artist: "Priya (Age 11)", img: SAMPLE_2, total: 100, sold: 85 },
-              { title: "Dreamy Village", artist: "Rohan (Age 8)", img: SAMPLE_1, total: 100, sold: 100 },
+              { title: "Dreamy Village", artist: "Rohan (Age 8)", img: SAMPLE_1, total: 100, sold: 20 },
+              { title: "My Hero", artist: "Neha (Age 7)", img: SAMPLE_2, total: 100, sold: 50 },
+              { title: "Outer Space", artist: "Aryan (Age 10)", img: SAMPLE_1, total: 100, sold: 100 },
+              { title: "Dancing Tiger", artist: "Riya (Age 9)", img: SAMPLE_2, total: 100, sold: 5 },
             ].map((art, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                transition={{ duration: 0.6, delay: (idx % 3) * 0.1 }}
                 className="group bg-white dark:bg-slate-950 rounded-3xl overflow-hidden shadow-xl shadow-slate-200/50 dark:shadow-none border border-border hover:border-primary/50 transition-all hover:-translate-y-2 flex flex-col"
               >
                 <div className="relative w-full aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-800">
@@ -224,10 +228,10 @@ export default function Home() {
                     src={art.img}
                     alt={art.title}
                     fill
-                    className={`object-cover transition-transform duration-700 group-hover:scale-110 ${art.sold === art.total ? 'grayscale opacity-70' : ''}`}
+                    className={`object-cover transition-transform duration-700 group-hover:scale-110`}
                   />
                   {art.sold === art.total && (
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm">
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                       <div className="bg-white/90 text-black px-6 py-2 rounded-full font-bold shadow-lg">
                         Fully Supported!
                       </div>
@@ -256,15 +260,15 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <button
-                      disabled={art.sold === art.total}
+                    <Link
+                      href={art.sold === art.total ? "#" : "/login"}
                       className={`w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${art.sold === art.total
-                          ? 'bg-secondary text-secondary-foreground cursor-not-allowed opacity-50'
-                          : 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5'
+                        ? 'bg-secondary text-secondary-foreground cursor-not-allowed opacity-50'
+                        : 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5'
                         }`}
                     >
                       {art.sold === art.total ? 'Max Limits Reached' : 'Login to Support ($5)'}
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -272,9 +276,9 @@ export default function Home() {
           </div>
 
           <div className="mt-16 text-center">
-            <button className="text-primary font-bold hover:underline flex items-center justify-center gap-2 mx-auto decoration-2 underline-offset-4">
+            <Link href="/artists" className="text-primary font-bold hover:underline flex items-center justify-center gap-2 mx-auto decoration-2 underline-offset-4 w-max">
               View All Artists <ArrowRight size={18} />
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -291,9 +295,9 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Help us build a <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-orange-500">brighter</span> future today.</h2>
               <p className="text-slate-400 text-lg sm:text-lg mb-8 max-w-md">Your contribution buys directly into a child's education, creating an unbreakable chain of hope across borders.</p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-white text-slate-950 hover:bg-slate-100 px-8 py-4 rounded-xl font-bold shadow-xl transition-all hover:scale-105 active:scale-95 text-center">
+                <Link href="/signup" className="bg-white text-slate-950 hover:bg-slate-100 px-8 py-4 rounded-xl font-bold shadow-xl transition-all hover:scale-105 active:scale-95 text-center">
                   Create Account
-                </button>
+                </Link>
               </div>
             </div>
 
